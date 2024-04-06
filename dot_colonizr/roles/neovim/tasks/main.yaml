@@ -2,8 +2,6 @@
   community.general.homebrew:
     state: head
     name:
-    - gcc
-    - make
     - ripgrep
     - fd
     - neovim
