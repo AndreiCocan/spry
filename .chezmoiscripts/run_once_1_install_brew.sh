@@ -8,7 +8,7 @@ if command -v brew &> /dev/null; then
 fi
 
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # shellcheck disable=SC2016
 if test "$(uname -s)" == "Linux"; then
@@ -18,4 +18,6 @@ if test "$(uname -s)" == "Linux"; then
 fi
 
 echo "✅ [homebrew] Installed!"
+
+brew -v
 
