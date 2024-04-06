@@ -14,7 +14,7 @@ This is using [Chezmoi](https://chezmoi.io), [Ansible](https://www.ansible.com/)
 To setup a computer, run the following command:
 
 ```shell
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:AndreiCocan/spry.git
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/AndreiCocan/spry.git
 ```
 
 aaaand, thats it! **Your good to go!**
