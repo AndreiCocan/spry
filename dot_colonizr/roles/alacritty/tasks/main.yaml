@@ -39,10 +39,12 @@
       autoremove: true
 
   - name: Install core snap
+    become: true
     community.general.snap:
       name: core
 
   - name: Install Alacritty
+    become: true
     community.general.snap:
       name: alacritty
       classic: true
