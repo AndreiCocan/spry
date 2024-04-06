@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# .ansible/main.yml hash: {{ include "dot_ansible/main.yaml" | sha256sum }}
+# .colonizr/main.yml hash: {{ include "dot_colonizr/main.yaml" | sha256sum }}
 
 set -euoE pipefail
+set -x
 
 source ~/.bashrc
 
@@ -21,10 +22,7 @@ run_playbook() {
     playbook_opts+=("--ask-become-pass")
   fi
 
-  export ANSIBLE_CONFIG="${cwd}/ansible/ansible.cfg"
-
-  echo "ansible-playbook -e ansible_user=$(whoami) {{ joinPath .chezmoi.sourceDir "dot_ansible/main.yaml" | quote }} -v ${playbook_opts[*]}"
-  ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_ansible/main.yaml" | quote }} -v "${playbook_opts[*]}"
+  ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_colonizr/main.yaml" | quote }} -v "${playbook_opts[*]}"
   echo "✅ [ansible] Configured!"
 }
 
