@@ -2,5 +2,7 @@
 
 set -euoE pipefail
 
+echo "✨ Lauching spry ✨"
+echo "Enter your password to continue..."
 # Sudo for silent password prompt later
-sudo echo " ✨ Lauching spry ✨"
+sudo echo "🔥 Here we goooo... 🔥"
