@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-set -euoE pipefail
-set -x
-
 echo "🚀 [homebrew] Installing..."
 
 if command -v brew &> /dev/null; then

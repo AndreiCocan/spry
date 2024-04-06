@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euoE pipefail
-
 echo "🚀 [ansible] Installing..."
 
 if command -v ansible-playbook &> /dev/null; then
