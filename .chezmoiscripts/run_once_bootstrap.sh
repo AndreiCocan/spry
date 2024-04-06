@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -euoE pipefail
 
 echo "✨ Lauching spry ✨"
 echo "Enter your password to continue..."
@@ -22,8 +23,9 @@ NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebre
 # shellcheck disable=SC2016
 if test "$(uname -s)" == "Linux"; then
   echo "👽️ [homebrew] Exporting path..."
-  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/bshp/.bashrc
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 fi
 
 echo "✅ [homebrew] Installed!"
