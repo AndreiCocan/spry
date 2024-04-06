@@ -1,0 +1,6 @@
+- name: "Install Git and GitHub CLI"
+  community.general.homebrew:
+    name:
+    - git
+    - gh
+    - lazygit

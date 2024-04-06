@@ -1,0 +1,8 @@
+k9s:
+  ui:
+    skin: catppuccin-mocha
+    
+  logger:
+    tail: 10000
+    buffer: 500000
+

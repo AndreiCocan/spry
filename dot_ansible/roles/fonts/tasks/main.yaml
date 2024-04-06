@@ -1,0 +1,45 @@
+- name: "Install Fonts (macOS)"
+  when: ansible_os_family == "Darwin"
+  block:
+  
+  - name: "Brew Tap homebrew/cask-fonts"
+    community.general.homebrew_tap: 
+      name: homebrew/cask-fonts
+      state: present
+
+  - name: "Install Fonts"
+    community.general.homebrew_cask:
+      name:
+        - font-powerline-symbols
+        - font-jetbrains-mono-nerd-font
+      install_options: no-quarantine
+      accept_external_apps: true
+
+
+
+- name: "Install Fonts (Linux)"
+  when: ansible_os_family == "Debian"
+  block:
+
+    - name: Ensure fonts directory
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/.fonts"
+        state: directory
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"
+
+    - name: Check if JetBrains Mono font is present
+      ansible.builtin.stat:
+        path: "{{ ansible_user_dir }}/.fonts/JetBrainsMonoNerd*FontMono*"
+      register: jetbrains_mono_present
+      ignore_errors: true
+      changed_when: false
+
+    - name: Download Jetbrains Mono if not present
+      when: jetbrains_mono_present is failed
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+        dest: "{{ ansible_user_dir }}/.fonts/"
+        remote_src: true
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"

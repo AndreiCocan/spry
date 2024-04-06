@@ -1,0 +1,5 @@
+- name: "Install Terraform and Terragrunt"
+  community.general.homebrew:
+    name:
+    - terraform 
+    - terragrunt

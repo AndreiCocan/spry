@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# .ansible/main.yml hash: {{ include "dot_ansible/main.yaml" | sha256sum }}
+
+set -euoE pipefail
+
+# shellcheck disable=SC2086
+cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
+
+sudo_required() { 
+  sudo -n true 2>/dev/null || return 0; 
+}
+
+run_playbook() {
+  echo "🚀 [ansible] Running Playbook..."
+  local playbook_opts=()
+
+  if sudo_required; then
+    playbook_opts+=("--ask-become-pass")
+  fi
+
+  export ANSIBLE_CONFIG="${cwd}/ansible/ansible.cfg"
+
+  echo "ansible-playbook -e ansible_user=$(whoami) {{ joinPath .chezmoi.sourceDir "dot_ansible/main.yaml" | quote }} -v ${playbook_opts[*]}"
+  ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_ansible/main.yaml" | quote }} -v "${playbook_opts[*]}"
+  echo "✅ [ansible] Configured!"
+}
+
+run_playbook
+

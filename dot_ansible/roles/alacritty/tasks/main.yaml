@@ -1,0 +1,48 @@
+- name: "Install Alacritty (macOS)"
+  when: ansible_os_family == "Darwin"
+  block:
+
+  - name: "Install Alacritty"
+    community.general.homebrew_cask:
+      name:
+        - alacritty
+      install_options: no-quarantine
+      accept_external_apps: true
+
+
+
+- name: "Install Alacritty (Linux)"
+  when: ansible_os_family == "Debian"
+  block:
+
+  - name: Update apt
+    become: true
+    ansible.builtin.apt:
+      update_cache: true
+
+  - name: Install snapd
+    become: true
+    ansible.builtin.package:
+      name: 
+      - snapd
+
+  - name: Update apt
+    become: true
+    ansible.builtin.apt:
+      upgrade: safe
+    changed_when: false
+
+  - name: Clean apt
+    become: true
+    ansible.builtin.apt:
+      autoclean: true
+      autoremove: true
+
+  - name: Install core snap
+    community.general.snap:
+      name: core
+
+  - name: Install Alacritty
+    community.general.snap:
+      name: alacritty
+      classic: true

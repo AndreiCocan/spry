@@ -1,0 +1,13 @@
+- name: "Install Tmux and Tpm"
+  block:
+
+  - name: "Install Tmux"
+    community.general.homebrew:
+      name: 
+      - tmux
+
+  - name: "Install Tpm"
+    ansible.builtin.git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: "{{ ansible_user_dir }}/.tmux/plugins/tpm"
+      version: master

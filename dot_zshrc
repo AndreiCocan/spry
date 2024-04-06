@@ -1,0 +1,6 @@
+export EDITOR='nvim'
+
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+
+eval "$(tmuxifier init -)"
+eval "$(starship init zsh)"

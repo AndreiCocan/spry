@@ -1,0 +1,5 @@
+- name: "Install Docker"
+  community.general.homebrew:
+    state: head
+    name:
+    - docker

@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  strategy: linear
+  become: true
+  connection: local
+  gather_facts: true
+
+  vars_files:
+    - config.yaml
+
+  roles:
+    - name: alacritty
+      tags: alacritty
+
+    - name: zsh
+      tags: zsh
+
+    - name: fonts
+      tags: fonts
+
+    - name: tmux
+      tags: tmux
+
+    - name: spaceship
+      tags: spaceship
+      
+    - name: git
+      tags: git
+
+    - name: neovim
+      tags: neovim
+
+    - name: python
+      tags: python
+
+    - name: node
+      tags: node
+
+    - name: docker
+      tags: docker
+    
+    - name: kubernetes
+      tags: kubernetes
+
+    - name: terraform
+      tags: terraform
+

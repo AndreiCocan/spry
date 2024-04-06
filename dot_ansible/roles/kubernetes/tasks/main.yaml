@@ -1,0 +1,6 @@
+- name: "Install Kubernetes tools"
+  community.general.homebrew:
+    name:
+    - kubectl 
+    - k9s
+    - helm
