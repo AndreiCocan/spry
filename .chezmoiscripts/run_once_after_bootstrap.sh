@@ -77,7 +77,7 @@ if sudo_required; then
   playbook_opts+=("--ask-become-pass")
 fi
 
-ansible-playbook -e "ansible_user=$(whoami)" ".colonizr/main.yaml"
+ansible-playbook -e "ansible_user=$(whoami)" ".colonizr/main.yaml" -v
 echo "✅ [ansible] Configured!"
 
 
