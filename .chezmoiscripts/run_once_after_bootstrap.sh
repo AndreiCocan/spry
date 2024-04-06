@@ -6,6 +6,17 @@ echo "Enter your password to continue..."
 sudo echo "🔥 Here we goooo... 🔥"
 
 #################################################
+#############  REQUIREMENTS INSTALL  ############
+#################################################
+
+echo "🚀 [] Gathering Tools..."
+
+if test "$(uname -s)" == "Linux"; then\
+  sudo apt-get update
+  sudo apt-get install build-essential procps curl file git
+fi
+
+#################################################
 ###############  HOMEBREW INSTALL  ##############
 #################################################
 
