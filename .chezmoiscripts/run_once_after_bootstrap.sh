@@ -12,8 +12,8 @@ sudo echo "🔥 Here we goooo... 🔥"
 echo "🚀 [] Gathering Tools..."
 
 if test "$(uname -s)" == "Linux"; then\
-  sudo apt-get update
-  sudo apt-get install build-essential procps curl file git
+  sudo apt-get update -y
+  sudo apt-get install build-essential procps curl file git -y
 fi
 
 #################################################

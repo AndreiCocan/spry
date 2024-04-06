@@ -1,9 +1,3 @@
-- name: "Install gcc"
-  community.general.homebrew:
-    state: head
-    name:
-    - gcc
-
 - name: "Install Spaceship Prompt"
   community.general.homebrew:
     state: head
