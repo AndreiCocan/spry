@@ -6,7 +6,7 @@ echo "Enter your password to continue..."
 sudo echo "🔥 Here we goooo... 🔥"
 
 #################################################
-###############     HOMEBREW     ################
+###############  HOMEBREW INSTALL  ##############
 #################################################
 
 echo "🚀 [homebrew] Installing..."
@@ -31,7 +31,7 @@ echo "✅ [homebrew] Installed!"
 brew -v
 
 #################################################
-###############      ANSIBLE     ################
+################  ANSIBLE INSTALL  ##############
 #################################################
 
 echo "🚀 [ansible] Installing..."
@@ -48,3 +48,25 @@ echo "🚀 [ansible] Installing Collections..."
 ansible-galaxy collection install community.general
 
 echo "✅ [ansible] Installed!"
+
+#################################################
+###############   PLAYBOOK RUN   ################
+#################################################
+
+cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
+
+sudo_required() { 
+  sudo -n true 2>/dev/null || return 0; 
+}
+
+echo "🚀 [ansible] Running Playbook..."
+local playbook_opts=()
+
+if sudo_required; then
+  playbook_opts+=("--ask-become-pass")
+fi
+
+ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_colonizr/main.yaml" | quote }} -v "${playbook_opts[*]}"
+echo "✅ [ansible] Configured!"
+
+

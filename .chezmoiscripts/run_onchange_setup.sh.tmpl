@@ -2,8 +2,6 @@
 
 # .colonizr/main.yml hash: {{ include "dot_colonizr/main.yaml" | sha256sum }}
 
-source ~/.bashrc
-
 # shellcheck disable=SC2086
 cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
 
