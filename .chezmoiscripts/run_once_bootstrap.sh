@@ -66,7 +66,7 @@ if sudo_required; then
   playbook_opts+=("--ask-become-pass")
 fi
 
-ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_colonizr/main.yaml" | quote }} -v "${playbook_opts[*]}"
+ansible-playbook -e "ansible_user=$(whoami)" ".colonizr/main.yaml" -v "${playbook_opts[*]}"
 echo "✅ [ansible] Configured!"
 
 
