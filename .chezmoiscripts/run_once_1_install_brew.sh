@@ -21,3 +21,4 @@ echo "✅ [homebrew] Installed!"
 
 brew -v
 
+brew install ansible
