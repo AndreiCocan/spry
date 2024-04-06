@@ -11,7 +11,7 @@ if command -v brew &> /dev/null; then
 fi
 
 
-NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # shellcheck disable=SC2016
 if test "$(uname -s)" == "Linux"; then
