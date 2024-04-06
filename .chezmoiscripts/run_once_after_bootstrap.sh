@@ -64,20 +64,7 @@ echo "✅ [ansible] Installed!"
 ###############   PLAYBOOK RUN   ################
 #################################################
 
-cwd="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
-
-sudo_required() { 
-  sudo -n true 2>/dev/null || return 0; 
-}
-
 echo "🚀 [ansible] Running Playbook..."
-local playbook_opts=()
 
-if sudo_required; then
-  playbook_opts+=("--ask-become-pass")
-fi
-
-ansible-playbook -e "ansible_user=$(whoami)" ".colonizr/main.yaml" -v
+ansible-playbook -e "ansible_user=$(whoami)" "~/.colonizr/main.yaml" -v
 echo "✅ [ansible] Configured!"
-
-
