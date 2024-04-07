@@ -17,4 +17,3 @@
     ansible.builtin.user:
       name: '{{ ansible_user }}'
       shell: '{{ zsh_path.stdout }}'
-      system: true
