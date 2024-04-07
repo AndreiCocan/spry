@@ -2,9 +2,12 @@
 
 # .colonizr/main.yml hash: {{ include "dot_colonizr/main.yaml" | sha256sum }}
 
-echo "🚀 [ansible] Running Playbook..."
+if command -v ansible-playbook &> /dev/null; then
+  
+  echo "🚀 [ansible] Running Playbook..."
 
-ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_colonizr/main.yaml" | quote }}
+  ansible-playbook -e "ansible_user=$(whoami)" {{ joinPath .chezmoi.sourceDir "dot_colonizr/main.yaml" | quote }}
 
-echo "✅ [ansible] Configured!"
+  echo "✅ [ansible] Configured!"
 
+if
