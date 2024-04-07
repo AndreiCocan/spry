@@ -26,11 +26,11 @@
         path: "{{ ansible_user_dir }}/.fonts"
         state: directory
         mode: "0755"
-        owner: "{{ ansible_user_id }}"
+        owner: "{{ ansible_user }}"
 
     - name: Check if JetBrains Mono font is present
       ansible.builtin.stat:
-        path: "{{ ansible_user_dir }}/.fonts/JetBrainsMonoNerd*FontMono*"
+        path: "{{ ansible_user }}/.fonts/JetBrainsMonoNerd*FontMono*"
       register: jetbrains_mono_present
       ignore_errors: true
       changed_when: false
@@ -42,4 +42,4 @@
         dest: "{{ ansible_user_dir }}/.fonts/"
         remote_src: true
         mode: "0755"
-        owner: "{{ ansible_user_id }}"
+        owner: "{{ ansible_user }}"
