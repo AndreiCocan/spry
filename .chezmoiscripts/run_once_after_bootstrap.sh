@@ -66,5 +66,6 @@ echo "✅ [ansible] Installed!"
 
 echo "🚀 [ansible] Running Playbook..."
 
-ansible-playbook -e "ansible_user=$(whoami)" "~/.colonizr/main.yaml" -v
+ansible-playbook -e "ansible_user=$(whoami)" "~/.colonizr/main.yaml"
+
 echo "✅ [ansible] Configured!"

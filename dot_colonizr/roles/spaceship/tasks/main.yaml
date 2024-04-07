@@ -1,5 +1,4 @@
 - name: "Install Spaceship Prompt"
   community.general.homebrew:
-    state: head
     name:
     - spaceship
