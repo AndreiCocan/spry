@@ -10,18 +10,18 @@
   roles:
     - name: alacritty
       tags: alacritty
-
-    - name: zsh
-      tags: zsh
-
+   
+    - name: tmux
+      tags: tmux
+    
     - name: fonts
       tags: fonts
 
-    - name: tmux
-      tags: tmux
-
     - name: spaceship
       tags: spaceship
+   
+    - name: zsh
+      tags: zsh
       
     - name: git
       tags: git

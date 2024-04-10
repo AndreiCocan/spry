@@ -17,3 +17,6 @@
     ansible.builtin.user:
       name: '{{ ansible_user }}'
       shell: '{{ zsh_path.stdout }}'
+
+  - name: "Source ZSH"
+    ansible.builtin.command: zsh -c "source ~/.zshrc"

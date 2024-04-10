@@ -6,3 +6,6 @@
       name: 
       - tmux
 
+  - name: "Launch Tmux to install Tpm and Plugins" 
+    ansible.builtin.command:
+      cmd: tmux new-session -d -s default
