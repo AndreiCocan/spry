@@ -1,4 +1,4 @@
-- name: "Install Spaceship Prompt"
+- name: "Install Starship Prompt"
   community.general.homebrew:
     name:
-    - spaceship
+    - starship
