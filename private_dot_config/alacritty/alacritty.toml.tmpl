@@ -1,9 +1,3 @@
-{{- if (eq .chezmoi.os "darwin") -}}
-SHELL: &SHELL /opt/homebrew/bin/fish
-{{- else }}
-SHELL: &SHELL /home/linuxbrew/.linuxbrew/bin/zsh
-{{- end }}
-
 import = [
     "~/.config/alacritty/catppuccin-frappe.toml"
 ]
@@ -38,7 +32,11 @@ family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [shell]
-program = *SHELL
+{{- if (eq .chezmoi.os "darwin") -}}
+program = /opt/homebrew/bin/zsh
+{{- else }}
+program = /home/linuxbrew/.linuxbrew/bin/zsh
+{{- end }}
 args = ["-lc","tmux -u new-session -As main ";" set-option -g detach-on-destroy off"]
 
 
