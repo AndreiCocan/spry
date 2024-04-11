@@ -32,11 +32,9 @@
       ansible.builtin.stat:
         path: "{{ ansible_user }}/.fonts/JetBrainsMonoNerd*FontMono*"
       register: jetbrains_mono_present
-      ignore_errors: true
-      changed_when: false
 
     - name: Download Jetbrains Mono if not present
-      when: jetbrains_mono_present is failed
+      when: not jetbrains_mono_present.stat.exists
       ansible.builtin.unarchive:
         src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
         dest: "{{ ansible_user_dir }}/.fonts/"
