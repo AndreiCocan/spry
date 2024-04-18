@@ -30,14 +30,14 @@
 
     - name: Check if JetBrains Mono font is present
       ansible.builtin.stat:
-        path: "{{ ansible_user }}/.fonts/JetBrainsMonoNerd*FontMono*"
+        path: "{{ ansible_user }}/.local/share/fonts/JetBrainsMonoNerd*FontMono*"
       register: jetbrains_mono_present
 
     - name: Download Jetbrains Mono if not present
       when: not jetbrains_mono_present.stat.exists
       ansible.builtin.unarchive:
         src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-        dest: "{{ ansible_user_dir }}/.fonts/"
+        dest: "{{ ansible_user_dir }}/.local/share/fonts/"
         remote_src: true
         mode: "0755"
         owner: "{{ ansible_user }}"
