@@ -1,0 +1,27 @@
+- name: "Update Brew and Packages"
+  block:
+  - name: "Update and Upgrade Brew"
+    community.general.homebrew:
+      update_homebrew: true
+      upgrade_all: true
+
+
+- name: Update APT and Packages"
+  when: ansible_os_family == "Debian"
+  block:
+  - name: Update APT
+    become: true
+    ansible.builtin.apt:
+      update_cache: true
+
+  - name: Upgrade APT
+    become: true
+    ansible.builtin.apt:
+      upgrade: safe
+    changed_when: false
+
+  - name: Clean apt
+    become: true
+    ansible.builtin.apt:
+      autoclean: true
+      autoremove: true

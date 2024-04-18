@@ -21,9 +21,15 @@
   when: ansible_os_family == "Debian"
   block:
 
+    - name: Install Fontconfig
+      become: true
+      ansible.builtin.package:
+        name: 
+        - fontconfig
+
     - name: Ensure fonts directory
       ansible.builtin.file:
-        path: "{{ ansible_user_dir }}/.fonts"
+        path: "{{ ansible_user_dir }}/.local/share/fonts/"
         state: directory
         mode: "0755"
         owner: "{{ ansible_user }}"
@@ -41,3 +47,7 @@
         remote_src: true
         mode: "0755"
         owner: "{{ ansible_user }}"
+    
+    - name: Update fonts cache
+      ansible.builtin.command:
+        cmd: fc-cache -f -v

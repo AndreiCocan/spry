@@ -8,6 +8,9 @@
     - config.yaml
 
   roles:
+    - name: package-manager
+      tags: package-manager
+      
     - name: alacritty
       tags: alacritty
    

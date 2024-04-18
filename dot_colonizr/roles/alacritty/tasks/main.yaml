@@ -15,28 +15,11 @@
   when: ansible_os_family == "Debian"
   block:
 
-  - name: Update APT
-    become: true
-    ansible.builtin.apt:
-      update_cache: true
-
   - name: Install Snapd
     become: true
     ansible.builtin.package:
       name: 
       - snapd
-
-  - name: Update APT
-    become: true
-    ansible.builtin.apt:
-      upgrade: safe
-    changed_when: false
-
-  - name: Clean apt
-    become: true
-    ansible.builtin.apt:
-      autoclean: true
-      autoremove: true
 
   - name: Install core snap
     become: true
